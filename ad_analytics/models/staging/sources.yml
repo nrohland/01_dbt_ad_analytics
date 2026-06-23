@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    database: /Users/nicolasrohland/Documents/portfolio/01_dbt_ad_analytics/dev.duckdb
+    schema: raw
+    tables:
+      - name: raw_users
+      - name: raw_campaigns
+      - name: raw_ads
+      - name: raw_ad_events
