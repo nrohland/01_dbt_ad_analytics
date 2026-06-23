@@ -21,7 +21,7 @@ performance de campañas publicitarias en redes sociales.
 ```
 01_dbt_ad_analytics/
 ├── README.md
-├── data/          # CSVs del dataset (no se sube a Git)
+├── data/          # CSVs del dataset
 ├── models/        # Transformaciones SQL
 ├── seeds/         # Datos de referencia
 ├── tests/         # Tests de calidad
