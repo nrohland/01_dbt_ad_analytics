@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: "Usuarios limpios desde la fuente raw"
+    columns:
+      - name: user_id
+        description: "ID único del usuario. Nota: el dataset sintético contiene 50 user_id duplicados."
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: gender
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Male', 'Female', 'Other']
+      - name: country
+        tests:
+          - not_null
+
+  - name: stg_campaigns
+    description: "Campañas publicitarias limpias desde la fuente raw"
+    columns:
+      - name: campaign_id
+        description: "ID único de la campaña"
+        tests:
+          - not_null
+          - unique
+      - name: campaign_name
+        tests:
+          - not_null
+      - name: total_budget
+        tests:
+          - not_null
+
+  - name: stg_ads
+    description: "Anuncios limpios desde la fuente raw"
+    columns:
+      - name: ad_id
+        description: "ID único del anuncio"
+        tests:
+          - not_null
+          - unique
+      - name: campaign_id
+        tests:
+          - not_null
+      - name: platform
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Facebook', 'Instagram']
+
+  - name: stg_ad_events
+    description: "Eventos de anuncios limpios desde la fuente raw"
+    columns:
+      - name: event_id
+        description: "ID único del evento"
+        tests:
+          - not_null
+          - unique
+      - name: ad_id
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+      - name: event_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Impression', 'Click', 'Purchase', 'Like', 'Share', 'Comment']
