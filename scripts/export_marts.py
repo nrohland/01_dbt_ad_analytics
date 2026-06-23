@@ -9,7 +9,8 @@ os.makedirs(exports_path, exist_ok=True)
 marts = [
     "mart_campaign_performance",
     "mart_conversion_funnel",
-    "mart_user_behavior"
+    "mart_user_behavior",
+    "mart_analytics"
 ]
 
 for mart in marts:
