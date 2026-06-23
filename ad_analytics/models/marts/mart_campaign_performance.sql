@@ -39,13 +39,17 @@ final as (
         c.duration_days,
         c.total_budget,
         a.total_ads,
-        e.impressions,
-        e.clicks,
-        e.purchases,
-        e.engagements,
-        round(e.clicks::double / nullif(e.impressions, 0) * 100, 2)    as ctr,
-        round(e.purchases::double / nullif(e.clicks, 0) * 100, 2)      as conversion_rate,
-        round(e.engagements::double / nullif(e.impressions, 0) * 100, 2) as engagement_rate
+        coalesce(e.impressions, 0)                                      as impressions,
+        coalesce(e.clicks, 0)                                           as clicks,
+        coalesce(e.purchases, 0)                                        as purchases,
+        coalesce(e.engagements, 0)                                      as engagements,
+        round(coalesce(e.clicks, 0)::double / nullif(coalesce(e.impressions, 0), 0) * 100, 2)      as ctr,
+        round(coalesce(e.purchases, 0)::double / nullif(coalesce(e.clicks, 0), 0) * 100, 2)        as conversion_rate,
+        round(coalesce(e.engagements, 0)::double / nullif(coalesce(e.impressions, 0), 0) * 100, 2) as engagement_rate,
+        case
+            when coalesce(e.impressions, 0) = 0 then 'No Events'
+            else 'Active'
+        end                                                             as campaign_status
     from campaigns c
     left join ads_per_campaign a on c.campaign_id = a.campaign_id
     left join events_per_campaign e on c.campaign_id = e.campaign_id
