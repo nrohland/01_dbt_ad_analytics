@@ -18,7 +18,7 @@ performance de campañas publicitarias en redes sociales.
 | kagglehub   | Descarga del dataset |
 
 ## Estructura
-\`\`\`
+```
 01_dbt_ad_analytics/
 ├── README.md
 ├── data/          # CSVs del dataset (no se sube a Git)
@@ -26,4 +26,4 @@ performance de campañas publicitarias en redes sociales.
 ├── seeds/         # Datos de referencia
 ├── tests/         # Tests de calidad
 └── dbt_project.yml
-\`\`\`
+```
