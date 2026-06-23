@@ -38,6 +38,14 @@ El proyecto sigue una arquitectura de tres capas:
 
 ---
 
+## Dashboard
+
+Publicado en Tableau Public: [AD ANALYTICS PERFORMANCE](https://public.tableau.com/app/profile/nicolas.rohland/viz/ADANALYTICSPERFORMANCE/ADANALYTICSPERFORMANCE)
+
+![Dashboard Preview](docs/dashboard_preview.png)
+
+---
+
 ## Modelos
 
 ### Staging
